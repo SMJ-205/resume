@@ -33,14 +33,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         background-color: #1e1e1e;
         color: #e5e7eb;
-        scroll-behavior: smooth;
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+
+      canvas#matrix {
+        position: fixed;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        opacity: 0.15;
       }
     </style>
   </head>
   <body class="font-sans">
+    <!-- Matrix Background Canvas -->
+    <canvas id="matrix"></canvas>
+
     <!-- Navigation Bar -->
     <nav class="fixed top-0 w-full z-50 bg-dark bg-opacity-90 shadow-lg">
       <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
@@ -59,8 +78,7 @@
       <h1 class="text-5xl md:text-6xl font-bold text-tosca animate-fadeInUp">Sarif Mubdi Jantika</h1>
       <p class="mt-4 text-xl text-gray-400 animate-fadeInUp">Data Analyst & Accountant</p>
       <p class="mt-2 text-sm text-gray-500 animate-fadeInUp">Searching for Treasure in Data</p>
-      
-      <!-- Profile Picture moved here -->
+
       <div class="mt-6 animate-fadeInUp">
         <img 
           src="https://raw.githubusercontent.com/SMJ-205/resume/main/Prof%20Pic%20Draft.png" 
@@ -70,14 +88,14 @@
     </header>
 
     <!-- About -->
-    <section id="about" class="max-w-3xl mx-auto px-6 mt-10 animate-fadeInUp scroll-mt-50">
+    <section id="about" class="max-w-3xl mx-auto px-6 mt-8 animate-fadeInUp scroll-mt-50">
       <h2 class="text-2xl text-tosca font-semibold mb-4">About</h2>
       <p class="text-gray-300">
         An aspiring data analytics with accounting background from 12+ years experiences in handling financial and tax report. Have a high passion for translating business problems and gathering requirements into actionable items and delivering result which can be used for decision making. Highly determined to improve technical skills as data analyst.
       </p>
     </section>
 
-    <!-- Experience -->
+   <!-- Experience -->
     <section id="experience" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
       <h2 class="text-2xl text-tosca font-semibold mb-4">Experience</h2>
 
@@ -176,9 +194,60 @@
       </p>
     </section>
 
+
+    <!-- Contact -->
+    <section id="contact" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
+      <h2 class="text-2xl text-tosca font-semibold mb-4">Contact</h2>
+      <p class="text-gray-300">
+        Email: <a href="mailto:sarif.mj@gmail.com" class="text-tosca hover:underline">sarif.mj@gmail.com</a><br>
+        GitHub: <a href="https://github.com/SMJ-205" class="text-tosca hover:underline">SMJ-205</a><br>
+        LinkedIn: <a href="https://linkedin.com/in/sarifmj" class="text-tosca hover:underline">in/sarifmj</a>
+      </p>
+    </section>
+
     <!-- Footer -->
     <footer class="text-center text-sm text-gray-500 mt-16 mb-10">
       &copy; 2025 Sarif Mubdi Jantika. Built with 💻 and ☕.
     </footer>
+
+    <!-- Matrix Background Script -->
+    <script>
+      const canvas = document.getElementById('matrix');
+      const ctx = canvas.getContext('2d');
+
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+
+      const letters = '01'.split('');
+      const fontSize = 14;
+      const columns = canvas.width / fontSize;
+      const drops = Array.from({ length: columns }).fill(1);
+
+      function draw() {
+        ctx.fillStyle = 'rgba(30,30,30,0.15)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#2dd4bf';
+        ctx.font = `${fontSize}px monospace`;
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = letters[Math.floor(Math.random() * letters.length)];
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+
+          drops[i]++;
+        }
+      }
+
+      setInterval(draw, 50);
+
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    </script>
   </body>
 </html>
