@@ -200,33 +200,56 @@
 
   <!-- Projects -->
   <section id="projects" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
-    <div class="border border-teal-400/50 rounded-xl p-4">
-      <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Projects</h2>
+  <div class="border border-teal-400/50 rounded-xl p-4">
+    <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Projects</h2>
+    <div class="mb-6">
+      <h3 class="text-xl font-bold text-white">Demand Planning Analysis</h3>
+      <div class="text-gray-300 text-justify space-y-2">
+        <p>
+          <button onclick="openPopup()" class="mt-2 text-teal-400 underline hover:text-teal-300 transition">Sneak Peek to Analytical Dashboard</button><br><br)
+          In this project, I was tasked with conducting a demand planning analysis using dummy data provided by Astro. The main objective of the analysis was to generate demand projections for various products, enabling better inventory procurement planning and warehouse management.
+        </p>
+        <p>
+          To achieve this, I applied several forecasting methods, including:
+          <br>- 4-Week Moving Average
+          <br>- Holt-Winters Exponential Smoothing
+          <br>- Decomposition using Moving Average
+          <br>- Decomposition using Trend Analysis
+        </p>
+        <p>
+          After evaluating the performance of each method based on MAPE (Mean Absolute Percentage Error), the Holt-Winters method emerged as the most accurate and reliable for generating demand forecasts.
+        </p>
+        <p>
+          The results of the analysis are presented through an interactive dashboard built in Google Sheets, designed to provide actionable insights for inventory planning.
+        </p>
+        <p>
+          <a href="https://docs.google.com/spreadsheets/d/1kt40nTtKpuGvBIjNW22Yic4fz76HnNb9peKe2_ygIaA/edit?gid=1168121026#gid=1168121026" target="_blank" class="text-teal-400 underline hover:text-teal-300 transition">DPA Dashboard Google Sheet</a>
+          <br>
 
-      <div class="mb-6">
-        <h3 class="text-xl font-bold text-white">Inventory COGS Pipeline</h3>
-        <ul class="list-disc pl-6 text-gray-300 space-y-1">
-          <li>Created a dbt + Snowflake pipeline for weighted average inventory COGS.</li>
-          <li>Improved monthly close process speed and accuracy.</li>
-        </ul>
-      </div>
-
-      <div class="mb-6">
-        <h3 class="text-xl font-bold text-white">Google Sheets Team Game</h3>
-        <ul class="list-disc pl-6 text-gray-300 space-y-1">
-          <li>Built an online multiplayer game on Google Sheets with Apps Script.</li>
-          <li>Designed logic for real-time interaction with up to 7 players.</li>
-        </ul>
-      </div>
-
-      <div class="mb-6">
-        <h3 class="text-xl font-bold text-white">Everpro VAT Journal Automation</h3>
-        <ul class="list-disc pl-6 text-gray-300 space-y-1">
-          <li>Automated VAT journal posting logic in dbt for Everpro’s e-commerce platform.</li>
-        </ul>
+        </p>
       </div>
     </div>
-  </section>
+  </div>
+
+  <!-- Popup Image -->
+  <div id="popupOverlay" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden flex items-center justify-center">
+    <div class="relative max-w-3xl w-full p-4">
+      <button onclick="closePopup()" class="absolute top-2 right-4 text-white text-2xl font-bold hover:text-teal-400">&times;</button>
+      <img src="https://github.com/SMJ-205/resume/blob/main/DPA%20SMJ.jpeg?raw=true" alt="DPA Dashboard" class="w-full h-auto rounded-lg shadow-lg border border-gray-500">
+    </div>
+  </div>
+
+  <script>
+    function openPopup() {
+      document.getElementById('popupOverlay').classList.remove('hidden');
+    }
+
+    function closePopup() {
+      document.getElementById('popupOverlay').classList.add('hidden');
+    }
+  </script>
+</section>
+
 
   <!-- Contact -->
   <section id="contact" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
