@@ -32,6 +32,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
       html {
         scroll-behavior: smooth;
@@ -54,16 +55,57 @@
         pointer-events: none;
         opacity: 0.15;
       }
+
+      /* Smooth transition for dark/light mode */
+body, nav, section, div, h1, h2, h3, p, ul, li, a {
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
+.light-mode {
+  background-color: #f9fafb !important;
+  color: #1e1e1e !important;
+}
+
+.light-mode nav {
+  background-color: #ffffff !important;
+  background-opacity: 0.9 !important;
+}
+
+.light-mode .text-gray-300,
+.light-mode .text-gray-400,
+.light-mode .text-gray-500 {
+  color: #374151 !important;
+}
+
+.light-mode .text-white {
+  color: #111827 !important;
+}
+
+.light-mode .border-teal-400\/50 {
+  border-color: rgba(13, 148, 136, 0.5) !important; /* darker teal (Teal 600) */
+}
+
+/* Optional: darken tosca/teal text */
+.light-mode .text-tosca,
+.light-mode .text-teal,
+.light-mode .text-cyan,
+.light-mode a {
+  color: #0f766e !important; /* Teal 700 */
+}
     </style>
   </head>
   <body class="font-sans">
     <!-- Matrix Background Canvas -->
     <canvas id="matrix"></canvas>
 
+
     <!-- Navigation Bar -->
-    <nav class="fixed top-0 w-full z-50 bg-dark bg-opacity-90 shadow-lg">
+    <nav class="fixed top-0 w-full z-40 bg-dark bg-opacity-90 shadow-lg">
       <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
         <span class="text-tosca font-bold text-lg">Sarif MJ</span>
+              <button id="modeToggle" class="bg-tosca text-white px-3 py-1 rounded-md text-sm shadow hover:bg-teal-400 transition">
+        Toggle Mode
+      </button>
         <div class="space-x-4 text-sm">
           <a href="#about" class="text-gray-300 hover:text-tosca">About Me</a>
           <a href="#experiences" class="text-gray-300 hover:text-tosca">Experiences</a>
@@ -199,16 +241,21 @@
 </section>
 
   <!-- Projects -->
-  <section id="projects" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
-  <div class="border border-teal-400/50 rounded-xl p-4">
-    <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Projects</h2>
+<section id="projects" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
+  <div class="border border-teal-700/50 rounded-xl p-4"> <!-- darker border -->
+    <h2 class="text-2xl text-teal-600 font-semibold mb-4 text-center">Projects</h2> <!-- darker title -->
     <div class="mb-6">
       <h3 class="text-xl font-bold text-white">Demand Planning Analysis</h3>
       <div class="text-gray-300 text-justify space-y-2">
         <p>
-          <button onclick="openPopup()" class="mt-2 text-teal-400 underline hover:text-teal-300 transition">Sneak Peek to Analytical Dashboard</button><br><br)
-          In this project, I was tasked with conducting a demand planning analysis using dummy data provided by Astro. The main objective of the analysis was to generate demand projections for various products, enabling better inventory procurement planning and warehouse management.
+          <button onclick="openPopup()" class="mt-2 text-teal-600 underline hover:text-teal-700 transition">
+            Sneak Peek to Analytical Dashboard
+          </button>
         </p>
+
+<p>
+  In this project, I was tasked with conducting a demand planning analysis using dummy data provided by Astro. The main objective of the analysis was to generate demand projections for various products, enabling better inventory procurement planning and warehouse management.
+</p>
         <p>
           To achieve this, I applied several forecasting methods, including:
           <br>- 4-Week Moving Average
@@ -301,7 +348,10 @@
       }
 
       setInterval(draw, 50);
-
+      const toggle = document.getElementById('modeToggle');
+      toggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+      });
       window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
