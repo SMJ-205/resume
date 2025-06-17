@@ -243,7 +243,7 @@ body, nav, section, div, h1, h2, h3, p, ul, li, a {
 
   <!-- Projects -->
 <section id="projects" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
-  <div class="border border-teal-00/50 rounded-xl p-4"> <!-- darker border -->
+  <div class="border border-teal-400/50 rounded-xl p-4 ">
     <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Projects</h2> <!-- darker title -->
     <div class="mb-6">
       <h3 class="text-xl font-bold text-white">Demand Planning Analysis</h3>
@@ -300,16 +300,32 @@ body, nav, section, div, h1, h2, h3, p, ul, li, a {
 
 
   <!-- Contact -->
-  <section id="contact" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
-    <div class="border border-teal-400/50 rounded-xl p-4 ">
-      <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Contact</h2>
-      <p class="text-gray-300">
-        Email: <a href="mailto:sarif.mj@gmail.com" class="text-tosca hover:underline">sarif.mj@gmail.com</a><br>
-        GitHub: <a href="https://github.com/SMJ-205" class="text-tosca hover:underline">SMJ-205</a><br>
-        LinkedIn: <a href="https://linkedin.com/in/sarifmj" class="text-tosca hover:underline">in/sarifmj</a>
-      </p>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<section id="contact" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
+  <div class="border border-teal-400/50 rounded-xl p-4">
+    <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Contact</h2>
+    <div class="text-gray-300 space-y-2">
+      <div class="flex items-center gap-2">
+        <i data-lucide="mail" class="w-5 h-5 text-white"></i>
+        <a href="mailto:sarif.mj@gmail.com" class="text-tosca hover:underline">sarif.mj@gmail.com</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <i data-lucide="github" class="w-5 h-5 text-white"></i>
+        <a href="https://github.com/SMJ-205" class="text-tosca hover:underline">SMJ-205</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <i data-lucide="linkedin" class="w-5 h-5 text-white"></i>
+        <a href="https://linkedin.com/in/sarifmj" class="text-tosca hover:underline">in/sarifmj</a>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- Initialize Lucide -->
+<script>
+  lucide.createIcons();
+</script>
 
     <!-- Footer -->
     <footer class="text-center text-sm text-gray-500 mt-16 mb-10">
