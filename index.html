@@ -11,23 +11,23 @@
           extend: {
             colors: {
               dark: '#1e1e1e',
-              tosca: '#2dd4bf'
+              tosca: '#2dd4bf',
             },
             fontFamily: {
-              sans: ['Inter', 'sans-serif']
+              sans: ['Inter', 'sans-serif'],
             },
             keyframes: {
               fadeInUp: {
                 '0%': { opacity: 0, transform: 'translateY(20px)' },
-                '100%': { opacity: 1, transform: 'translateY(0)' }
-              }
+                '100%': { opacity: 1, transform: 'translateY(0)' },
+              },
             },
             animation: {
-              fadeInUp: 'fadeInUp 0.6s ease-out forwards'
-            }
-          }
-        }
-      }
+              fadeInUp: 'fadeInUp 0.6s ease-out forwards',
+            },
+          },
+        },
+      };
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,64 +57,99 @@
       }
 
       /* Smooth transition for dark/light mode */
-body, nav, section, div, h1, h2, h3, p, ul, li, a {
-  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
-}
+      body,
+      nav,
+      section,
+      div,
+      h1,
+      h2,
+      h3,
+      p,
+      ul,
+      li,
+      a {
+        transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+      }
 
-.light-mode {
-  background-color: #f9fafb !important;
-  color: #1e1e1e !important;
-}
+      .light-mode {
+        background-color: #f9fafb !important;
+        color: #1e1e1e !important;
+      }
 
-.light-mode nav {
-  background-color: #ffffff !important;
-  background-opacity: 0.9 !important;
-}
+      .light-mode nav {
+        background-color: #ffffff !important;
+        background-opacity: 0.9 !important;
+      }
 
-.light-mode .text-gray-300,
-.light-mode .text-gray-400,
-.light-mode .text-gray-500 {
-  color: #374151 !important;
-}
+      .light-mode .text-gray-300,
+      .light-mode .text-gray-400,
+      .light-mode .text-gray-500 {
+        color: #374151 !important;
+      }
 
-.light-mode .text-white {
-  color: #111827 !important;
-}
+      .light-mode .text-white {
+        color: #111827 !important;
+      }
 
-.light-mode .border-teal-400\/50 {
-  border-color: rgba(13, 148, 136, 0.5) !important; /* darker teal (Teal 600) */
-}
+      .light-mode .border-teal-400\/50 {
+        border-color: rgba(13, 148, 136, 0.5) !important; /* darker teal (Teal 600) */
+      }
 
-/* Optional: darken tosca/teal text */
-.light-mode .text-tosca,
-.light-mode .text-teal,
-.light-mode .text-cyan,
-.light-mode a {
-  color: #0f766e !important; /* Teal 700 */
-}
+      .light-mode .text-tosca,
+      .light-mode .text-teal,
+      .light-mode .text-cyan,
+      .light-mode a {
+        color: #0f766e !important; /* Teal 700 */
+      }
+
+      /* Styles for mobile devices in portrait mode */
+      @media (max-width: 768px) and (orientation: portrait) {
+        nav .space-x-4 {
+          flex-direction: column;
+          space-y-4;
+          space-x-0;
+        }
+
+        nav .space-x-4 a {
+          display: block;
+          text-align: center;
+        }
+
+        nav .space-x-4 button {
+          width: 100%;
+          margin-bottom: 0.5rem;
+        }
+
+        section#about {
+          padding-top: 20px;
+        }
+
+        h1, p {
+          font-size: calc(1rem + 2vw);
+        }
+      }
     </style>
   </head>
   <body class="font-sans">
     <!-- Matrix Background Canvas -->
     <canvas id="matrix"></canvas>
 
-
     <!-- Navigation Bar -->
-<nav class="fixed top-0 w-full z-40 bg-dark bg-opacity-90 shadow-lg">
-  <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
-    <span class="text-tosca font-bold text-lg">Sarif MJ</span>
-    
-    <div class="space-x-4 text-sm flex items-center">
-      <button id="modeToggle" class="bg-tosca text-white px-3 py-1 rounded-md text-sm shadow hover:bg-teal-400 transition">
-        Toggle Mode
-      </button>
-      <a href="#about" class="text-gray-300 hover:text-tosca">About Me</a>
-      <a href="#experiences" class="text-gray-300 hover:text-tosca">Experiences</a>
-      <a href="#projects" class="text-gray-300 hover:text-tosca">Projects</a>
-      <a href="#contact" class="text-gray-300 hover:text-tosca">Contact</a>
-    </div>
-  </div>
-</nav>
+    <nav class="fixed top-0 w-full z-40 bg-dark bg-opacity-90 shadow-lg">
+      <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+        <span class="text-tosca font-bold text-lg">Sarif MJ</span>
+        
+        <div class="space-x-4 text-sm flex items-center">
+          <button id="modeToggle" class="bg-tosca text-white px-3 py-1 rounded-md text-sm shadow hover:bg-teal-400 transition">
+            Toggle Mode
+          </button>
+          <a href="#about" class="text-gray-300 hover:text-tosca">About Me</a>
+          <a href="#experiences" class="text-gray-300 hover:text-tosca">Experiences</a>
+          <a href="#projects" class="text-gray-300 hover:text-tosca">Projects</a>
+          <a href="#contact" class="text-gray-300 hover:text-tosca">Contact</a>
+        </div>
+      </div>
+    </nav>
 
     <!-- About Section (Merged with Header/Profile) -->
     <section id="about" class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 scroll-mt-20">
@@ -130,18 +165,18 @@ body, nav, section, div, h1, h2, h3, p, ul, li, a {
       </div>
 
       <!-- Now the About text is directly below the picture -->
-<div class="max-w-2xl mx-auto mt-6 px-6 text-justify animate-fadeInUp">
-  <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">About Me</h2>
-  
-  <p class="text-gray-300 mb-4">
-    Data Analyst with 12+ years of experience in accounting and tax reporting — now leveraging that deep financial background to build reliable, decision-ready data products. Currently working at Connected Commerce, where I focus on creating a trusted SSOT for finance operations. I design and automate data pipelines using tools like <span class="text-tosca">Airflow</span>, transform business requirements into scalable models with <span class="text-tosca">SQL</span>, <span class="text-tosca">DBT</span> and <span class="text-tosca">Python</span>. I also help enforce data standards and conventions to ensure our datasets remain clean, consistent, and reliable.
-  </p>
-  
-  <p class="text-gray-300">
-    My years as an accountant taught me how businesses think — and now I translate those needs into data solutions that actually work for stakeholders. Passionate about connecting the dots between raw data and real business impact, and always looking to grow as a modern data professional.
-  </p>
-</div>
-</section>
+      <div class="max-w-2xl mx-auto mt-6 px-6 text-justify animate-fadeInUp">
+        <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">About Me</h2>
+        
+        <p class="text-gray-300 mb-4">
+          Data Analyst with 12+ years of experience in accounting and tax reporting — now leveraging that deep financial background to build reliable, decision-ready data products. Currently working at Connected Commerce, where I focus on creating a trusted SSOT for finance operations. I design and automate data pipelines using tools like <span class="text-tosca">Airflow</span>, transform business requirements into scalable models with <span class="text-tosca">SQL</span>, <span class="text-tosca">DBT</span> and <span class="text-tosca">Python</span>. I also help enforce data standards and conventions to ensure our datasets remain clean, consistent, and reliable.
+        </p>
+        
+        <p class="text-gray-300">
+          My years as an accountant taught me how businesses think — and now I translate those needs into data solutions that actually work for stakeholders. Passionate about connecting the dots between raw data and real business impact, and always looking to grow as a modern data professional.
+        </p>
+      </div>
+    </section>
 
  <!-- Experiences -->
 <section id="experiences" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
@@ -298,34 +333,32 @@ body, nav, section, div, h1, h2, h3, p, ul, li, a {
   </script>
 </section>
 
-
-  <!-- Contact -->
-<script src="https://unpkg.com/lucide@latest"></script>
-
-<section id="contact" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
-  <div class="border border-teal-400/50 rounded-xl p-4">
-    <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Contact</h2>
-    <div class="text-gray-300 space-y-2">
-      <div class="flex items-center gap-2">
-        <i data-lucide="mail" class="w-5 h-5 text-white"></i>
-        <a href="mailto:sarif.mj@gmail.com" class="text-tosca hover:underline">sarif.mj@gmail.com</a>
+    <!-- Contact -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <section id="contact" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
+      <div class="border border-teal-400/50 rounded-xl p-4">
+        <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Contact</h2>
+        <div class="text-gray-300 space-y-2">
+          <div class="flex items-center gap-2">
+            <i data-lucide="mail" class="w-5 h-5 text-white"></i>
+            <a href="mailto:sarif.mj@gmail.com" class="text-tosca hover:underline">sarif.mj@gmail.com</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="github" class="w-5 h-5 text-white"></i>
+            <a href="https://github.com/SMJ-205" class="text-tosca hover:underline">SMJ-205</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="linkedin" class="w-5 h-5 text-white"></i>
+            <a href="https://linkedin.com/in/sarifmj" class="text-tosca hover:underline">in/sarifmj</a>
+          </div>
+        </div>
       </div>
-      <div class="flex items-center gap-2">
-        <i data-lucide="github" class="w-5 h-5 text-white"></i>
-        <a href="https://github.com/SMJ-205" class="text-tosca hover:underline">SMJ-205</a>
-      </div>
-      <div class="flex items-center gap-2">
-        <i data-lucide="linkedin" class="w-5 h-5 text-white"></i>
-        <a href="https://linkedin.com/in/sarifmj" class="text-tosca hover:underline">in/sarifmj</a>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Initialize Lucide -->
-<script>
-  lucide.createIcons();
-</script>
+    <!-- Initialize Lucide -->
+    <script>
+      lucide.createIcons();
+    </script>
 
     <!-- Footer -->
     <footer class="text-center text-sm text-gray-500 mt-16 mb-10">
