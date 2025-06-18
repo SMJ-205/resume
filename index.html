@@ -104,6 +104,14 @@
 
       /* Styles for mobile devices in portrait mode */
       @media (max-width: 768px) and (orientation: portrait) {
+        body {
+          padding-top: 50px; /* Adjust based on navigation bar height */
+        }
+
+        nav {
+          position: relative;
+        }
+
         nav .space-x-4 {
           flex-direction: column;
           space-y-4;
@@ -120,12 +128,27 @@
           margin-bottom: 0.5rem;
         }
 
-        section#about {
-          padding-top: 20px;
+        section#about,
+        section#projects {
+          padding-top: 64px;
         }
 
-        h1, p {
-          font-size: calc(1rem + 2vw);
+        section#about h1,
+        section#projects h1 {
+          font-size: 1.5rem;
+        }
+
+        section#about p,
+        section#projects p {
+          font-size: 1rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 1rem;
         }
       }
     </style>
@@ -178,7 +201,7 @@
       </div>
     </section>
 
- <!-- Experiences -->
+<!-- Experiences -->
 <section id="experiences" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
   <div class="border border-teal-400/50 rounded-xl p-4 ">
     <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Experiences</h2>
