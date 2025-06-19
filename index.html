@@ -66,6 +66,13 @@
         opacity: 0.15;
       }
 
+      canvas#matrix {
+        will-change: transform;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        background: transparent;
+      }
+
       /* Smooth transition for dark/light mode */
       body, nav, section, div, h1, h2, h3, p, ul, li, a {
         transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
@@ -165,7 +172,7 @@
     <canvas id="matrix"></canvas>
 
     <!-- Navigation Bar -->
-    <nav class="fixed top-0 w-full z-40 bg-dark bg-opacity-90 shadow-lg">
+    <nav class="fixed top-0 w-full z-40 shadow-lg" style="background-color: rgba(30,30,30,0.9);">
       <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center relative">
         <span class="text-tosca font-bold text-lg">Sarif MJ</span>
         
