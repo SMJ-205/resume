@@ -21,9 +21,19 @@
                 '0%': { opacity: 0, transform: 'translateY(20px)' },
                 '100%': { opacity: 1, transform: 'translateY(0)' },
               },
+              zoomIn: {
+                '0%': { transform: 'scale(0.4)', opacity: 0 },
+                '100%': { transform: 'scale(1)', opacity: 1 },
+              },
+              zoomOut: {
+                '0%': { transform: 'scale(1)', opacity: 1 },
+                '100%': { transform: 'scale(0.4)', opacity: 0 },
+              },
             },
             animation: {
               fadeInUp: 'fadeInUp 0.6s ease-out forwards',
+              zoomIn: 'zoomIn 0.5s ease-out forwards',
+              zoomOut: 'zoomOut 0.5s ease-out forwards',
             },
           },
         },
@@ -87,7 +97,6 @@
         color: #0f766e !important; /* Teal 700 */
       }
 
-      /* Styles for mobile devices in portrait mode */
       @media (max-width: 768px) and (orientation: portrait) {
         nav .navigation-links {
           display: none; /* Hide full text links */
@@ -127,6 +136,23 @@
 
       #navDropdown a:hover {
         background-color: #333;
+      }
+
+      /* Smooth zoom animation */
+      .smooth-zoom {
+        transition: transform 0.5s ease, opacity 0.5s ease, height 0.5s ease, margin-bottom 0.5s ease;
+        transform: scale(0.4);
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+        margin-bottom: 0;
+      }
+
+      .show-zoom {
+        transform: scale(1);
+        opacity: 1;
+        height: auto;
+        margin-bottom: 20px;
       }
     </style>
   </head>
@@ -185,6 +211,20 @@
       toggle.addEventListener('click', () => {
         document.body.classList.toggle('light-mode');
       });
+
+      function toggleZoom() {
+        const zoomElement = document.getElementById('sneakPeekImage');
+        const projectSection = document.getElementById('projectSection');
+        if (zoomElement.classList.contains('show-zoom')) {
+          zoomElement.classList.remove('show-zoom');
+          zoomElement.classList.add('smooth-zoom');
+          projectSection.classList.remove('expanded');
+        } else {
+          zoomElement.classList.remove('smooth-zoom');
+          zoomElement.classList.add('show-zoom');
+          projectSection.classList.add('expanded');
+        }
+      }
     </script>
 
     <!-- About Section (Merged with Header/Profile) -->
@@ -196,7 +236,7 @@
       <div class="mt-6 animate-fadeInUp">
         <img 
           src="https://raw.githubusercontent.com/SMJ-205/resume/main/Prof%20Pic%20Draft.png" 
-          alt="Profile Picture of Sarif Mubdi Jantika" 
+          alt="Profile Picture" 
           class="rounded-full w-56 h-56 object-cover shadow-lg border-4 border-tosca" />
       </div>
 
@@ -214,7 +254,7 @@
       </div>
     </section>
 
-<!-- Experiences -->
+    <!-- Experiences Section -->
 <section id="experiences" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
   <div class="border border-teal-400/50 rounded-xl p-4 ">
     <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Experiences</h2>
@@ -312,96 +352,46 @@
   </div>
 </section>
 
-  <!-- Projects -->
-<section id="projects" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
-  <div class="border border-teal-400/50 rounded-xl p-4 ">
-    <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Projects</h2> <!-- darker title -->
-    <div class="mb-6">
-      <h3 class="text-xl font-bold text-white">Demand Planning Analysis</h3>
-      <div class="text-gray-300 text-justify space-y-2">
-        <p>
-          <button onclick="openPopup()" class="mt-2 text-teal-600 underline hover:text-teal-700 transition">
-            Sneak Peek to Analytical Dashboard
-          </button>
-        </p>
-
-<p>
-  In this project, I was tasked with conducting a demand planning analysis using dummy data provided by Astro. The main objective of the analysis was to generate demand projections for various products, enabling better inventory procurement planning and warehouse management.
-</p>
-        <p>
-          To achieve this, I applied several forecasting methods, including:
-          <br>- 4-Week Moving Average
-          <br>- Holt-Winters Exponential Smoothing
-          <br>- Decomposition using Moving Average
-          <br>- Decomposition using Trend Analysis
-        </p>
-        <p>
-          After evaluating the performance of each method based on MAPE (Mean Absolute Percentage Error), the Holt-Winters method emerged as the most accurate and reliable for generating demand forecasts.
-        </p>
-        <p>
-          The results of the analysis are presented through an interactive dashboard built in Google Sheets, designed to provide actionable insights for inventory planning.
-        </p>
-        <p>
-          <a href="https://docs.google.com/spreadsheets/d/1kt40nTtKpuGvBIjNW22Yic4fz76HnNb9peKe2_ygIaA/edit?gid=1168121026#gid=1168121026" target="_blank" class="text-teal-400 underline hover:text-teal-300 transition">DPA Dashboard Google Sheet</a>
-          <br>
-
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Popup Image -->
-  <div id="popupOverlay" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden flex items-center justify-center">
-    <div class="relative max-w-3xl w-full p-4">
-      <button onclick="closePopup()" class="absolute top-2 right-4 text-white text-2xl font-bold hover:text-teal-400">&times;</button>
-      <img src="https://github.com/SMJ-205/resume/blob/main/DPA%20SMJ.jpeg?raw=true" alt="DPA Dashboard" class="w-full h-auto rounded-lg shadow-lg border border-gray-500">
-    </div>
-  </div>
-
-  <script>
-    function openPopup() {
-      document.getElementById('popupOverlay').classList.remove('hidden');
-    }
-
-    function closePopup() {
-      document.getElementById('popupOverlay').classList.add('hidden');
-    }
-  </script>
-</section>
-
-    <!-- Contact -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <section id="contact" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
-      <div class="border border-teal-400/50 rounded-xl p-4">
-        <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Contact</h2>
-        <div class="text-gray-300 space-y-2">
-          <div class="flex items-center gap-2">
-            <i data-lucide="mail" class="w-5 h-5 text-white"></i>
-            <a href="mailto:sarif.mj@gmail.com" class="text-tosca hover:underline">sarif.mj@gmail.com</a>
-          </div>
-          <div class="flex items-center gap-2">
-            <i data-lucide="github" class="w-5 h-5 text-white"></i>
-            <a href="https://github.com/SMJ-205" class="text-tosca hover:underline">SMJ-205</a>
-          </div>
-          <div class="flex items-center gap-2">
-            <i data-lucide="linkedin" class="w-5 h-5 text-white"></i>
-            <a href="https://linkedin.com/in/sarifmj" class="text-tosca hover:underline">in/sarifmj</a>
+    <!-- Projects Section -->
+    <section id="projects" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
+      <div class="border border-teal-400/50 rounded-xl p-4 " id="projectSection">
+        <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Projects</h2>
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-white">Demand Planning Analysis</h3>
+          <div class="text-gray-300 text-justify space-y-2">
+            <p>
+              <button onclick="toggleZoom()" class="mt-2 text-teal-600 underline hover:text-teal-700 transition">
+                Sneak Peek to Analytical Dashboard
+              </button>
+            </p>
+            <!-- The image will appear here with a smooth zoom effect -->
+            <div class="smooth-zoom" id="sneakPeekImage">
+              <img src="https://github.com/SMJ-205/resume/blob/main/DPA%20SMJ.jpeg?raw=true" alt="DPA Dashboard" class="w-full h-auto rounded-lg shadow-lg border border-gray-500">
+            </div>
+            <p>
+              In this project, I was tasked with conducting a demand planning analysis using dummy data provided by Astro. The main objective of the analysis was to generate demand projections for various products, enabling better inventory procurement planning and warehouse management.
+            </p>
+            <p>
+              To achieve this, I applied several forecasting methods, including:
+              <br>- 4-Week Moving Average
+              <br>- Holt-Winters Exponential Smoothing
+              <br>- Decomposition using Moving Average
+              <br>- Decomposition using Trend Analysis
+            </p>
+            <p>
+              After evaluating the performance of each method based on MAPE (Mean Absolute Percentage Error), the Holt-Winters method emerged as the most accurate and reliable for generating demand forecasts.
+            </p>
+            <p>
+              The results of the analysis are presented through an interactive dashboard built in Google Sheets, designed to provide actionable insights for inventory planning.
+            </p>
+            <p>
+              <a href="https://docs.google.com/spreadsheets/d/1kt40nTtKpuGvBIjNW22Yic4fz76HnNb9peKe2_ygIaA/edit?gid=1168121026#gid=1168121026" target="_blank" class="text-teal-400 underline hover:text-teal-300 transition">DPA Dashboard Google Sheet</a>
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Initialize Lucide -->
-    <script>
-      lucide.createIcons();
-    </script>
-
-    <!-- Footer -->
-    <footer class="text-center text-sm text-gray-500 mt-16 mb-10">
-      &copy; 2025 Sarif Mubdi Jantika. Built with 💻 and ☕.
-    </footer>
-
-    <!-- Matrix Background Script -->
     <!-- Matrix Background Script -->
     <script>
       const canvas = document.getElementById('matrix');
@@ -439,6 +429,7 @@
       window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        drops.length = Math.floor(canvas.width / fontSize);
       });
     </script>
   </body>
