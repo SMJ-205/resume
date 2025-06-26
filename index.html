@@ -363,45 +363,279 @@
   </div>
 </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
-      <div class="border border-teal-400/50 rounded-xl p-4 " id="projectSection">
-        <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Projects</h2>
-        <div class="mb-6">
-          <h3 class="text-xl font-bold text-white">Demand Planning Analysis</h3>
-          <div class="text-gray-300 text-justify space-y-2">
-            <p>
-              <button onclick="toggleZoom()" class="mt-2 text-teal-600 underline hover:text-teal-700 transition">
-                Sneak Peek to Analytical Dashboard
-              </button>
-            </p>
-            <!-- The image will appear here with a smooth zoom effect -->
-            <div class="smooth-zoom" id="sneakPeekImage">
-              <img src="https://github.com/SMJ-205/resume/blob/main/DPA%20SMJ.jpeg?raw=true" alt="DPA Dashboard" class="w-full h-auto rounded-lg shadow-lg border border-gray-500">
-            </div>
-            <p>
-              In this project, I was tasked with conducting a demand planning analysis using dummy data provided by Astro. The main objective of the analysis was to generate demand projections for various products, enabling better inventory procurement planning and warehouse management.
-            </p>
-            <p>
-              To achieve this, I applied several forecasting methods, including:
-              <br>- 4-Week Moving Average
-              <br>- Holt-Winters Exponential Smoothing
-              <br>- Decomposition using Moving Average
-              <br>- Decomposition using Trend Analysis
-            </p>
-            <p>
-              After evaluating the performance of each method based on MAPE (Mean Absolute Percentage Error), the Holt-Winters method emerged as the most accurate and reliable for generating demand forecasts.
-            </p>
-            <p>
-              The results of the analysis are presented through an interactive dashboard built in Google Sheets, designed to provide actionable insights for inventory planning.
-            </p>
-            <p>
-              <a href="https://docs.google.com/spreadsheets/d/1kt40nTtKpuGvBIjNW22Yic4fz76HnNb9peKe2_ygIaA/edit?gid=1168121026#gid=1168121026" target="_blank" class="text-teal-400 underline hover:text-teal-300 transition">DPA Dashboard Google Sheet</a>
-            </p>
+  <!-- Projects Section -->
+<section id="projects" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
+  <div class="border border-teal-400/50 rounded-xl p-4" id="projectSection">
+    <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Projects</h2>
+
+    <!-- Project 1 -->
+    <div class="mb-6">
+      <h3 class="text-xl font-bold text-white">Demand Planning Analysis</h3>
+      <div class="text-gray-300 text-justify space-y-2">
+        <p>
+          <button onclick="togglePeek('peek1')" class="mt-2 text-teal-600 underline hover:text-teal-700 transition">
+            Sneak Peek to Analytical Dashboard
+          </button>
+        </p>
+        <div id="peek1" class="hidden transition-all duration-300 ease-in-out">
+          <img src="https://github.com/SMJ-205/resume/blob/main/DPA%20SMJ.jpeg?raw=true" alt="DPA Dashboard" class="w-full h-auto rounded-lg shadow-lg border border-gray-500 mt-2">
+        </div>
+        <p>
+          In this project, I was tasked with conducting a demand planning analysis using dummy data provided by Astro. The main objective of the analysis was to generate demand projections for various products, enabling better inventory procurement planning and warehouse management.
+        </p>
+        <p>
+          To achieve this, I applied several forecasting methods, including:
+          <br>- 4-Week Moving Average
+          <br>- Holt-Winters Exponential Smoothing
+          <br>- Decomposition using Moving Average
+          <br>- Decomposition using Trend Analysis
+        </p>
+        <p>
+          After evaluating the performance of each method based on MAPE (Mean Absolute Percentage Error), the Holt-Winters method emerged as the most accurate and reliable for generating demand forecasts.
+        </p>
+        <p>
+          The results of the analysis are presented through an interactive dashboard built in Google Sheets, designed to provide actionable insights for inventory planning.
+        </p>
+        <p>
+          <a href="https://docs.google.com/spreadsheets/d/1kt40nTtKpuGvBIjNW22Yic4fz76HnNb9peKe2_ygIaA/edit?gid=1168121026#gid=1168121026" target="_blank" class="text-teal-400 underline hover:text-teal-300 transition">DPA Dashboard Google Sheet</a>
+        </p>
+      </div>
+    </div>
+<br>
+    <!-- Project 2 -->
+    <div class="mb-6">
+      <h3 class="text-xl font-bold text-white">Google Sheet Convention Script</h3>
+      <div class="text-gray-300 text-justify space-y-2">
+        <p>
+          <button onclick="togglePeek('peek2')" class="mt-2 text-teal-600 underline hover:text-teal-700 transition">
+            Sneak Peek of Schema Validation Scenario
+          </button>
+        </p>
+        <div id="peek2" class="hidden transition-all duration-300 ease-in-out">
+          <img src="https://github.com/SMJ-205/resume/blob/main/Schema%20Scenario.jpeg?raw=true" alt="Schema Validation" class="w-full h-auto rounded-lg shadow-lg border border-gray-500 mt-2">
+        </div>
+        <p>
+          Manual data input remains an unavoidable part of data operations—even at large enterprises. One of the most commonly used tools for manual data entry is Google Sheets. However, relying on manual processes inevitably introduces the risk of human error, especially during data input or editing. In the context of ETL (Extract, Transform, Load) pipelines that source data from Google Sheets into a database system, one of the most frequent issues encountered is extract errors caused by data type mismatches.
+        </p>
+        <p>
+          To address this, I implemented a monitoring mechanism using Google Apps Script to validate manual data input in Google Sheets. In the provided spreadsheet format shared with stakeholders, a dedicated tab labeled <strong>"Schema"</strong> is included. This sheet serves as the primary reference for mapping and validating all input data, particularly ensuring adherence to predefined data types. If any data entered violates the rules defined in the "Schema" tab, the system automatically returns an error notification and forcefully deletes the invalid entry.
+        </p>
+        <p>
+          The result of this automated data validation process is a significant reduction in human error, improved data accuracy, and a smoother overall data pipeline execution.
+        </p>
+         <button onclick="togglePeek('peek3')" class="mt-2 text-teal-600 underline hover:text-teal-700 transition">
+    Apps Script Code
+  </button>
+   <!-- Full Apps Script Code Block -->
+        <div id="peek3" class="hidden transition-all duration-300 ease-in-out">
+          <div class="mt-2 bg-gray-900 text-green-200 text-sm p-4 rounded-lg border border-gray-600 overflow-x-auto max-h-96">
+            <pre><code>
+// === FULL Apps Script Code ===
+function onEdit(e) {
+  const range = e.range;
+  const sheet = range.getSheet();
+  const sheetName = sheet.getName();
+  const ss = sheet.getParent();
+
+  const schemaSheetName = 'Schema';
+
+  if (sheetName === schemaSheetName) {
+    const editedColumn = range.getColumn();
+    const editedRow = range.getRow();
+    const tableColumn = 1;
+    const fieldNameColumn = 2;
+
+    if (editedColumn === tableColumn || editedColumn === fieldNameColumn) {
+      const value = e.value;
+      if (value) {
+        const transformed = value.toLowerCase().replace(/\s+/g, '_');
+        sheet.getRange(editedRow, editedColumn).setValue(transformed);
+      }
+    }
+    return;
+  }
+
+  const schemaSheet = ss.getSheetByName(schemaSheetName);
+  if (!schemaSheet) return;
+
+  const schemaData = schemaSheet.getDataRange().getValues();
+  const validSheetNames = new Set(schemaData.slice(1).map(row => row[0]).filter(Boolean));
+
+  if (validSheetNames.has(sheetName)) {
+    validateEditedCell(e, schemaData);
+  }
+}
+
+function validateEditedCell(e, schemaData) {
+  const sheet = e.range.getSheet();
+  const sheetName = sheet.getName();
+  const row = e.range.getRow();
+  const col = e.range.getColumn();
+  const cell = sheet.getRange(row, col);
+  const value = cell.getValue();
+  const formula = cell.getFormula();
+
+  if (row === 1) return;
+
+  const schema = {};
+  for (let i = 1; i < schemaData.length; i++) {
+    const [tableName, fieldName, type, mode] = schemaData[i];
+    if (!schema[tableName]) schema[tableName] = {};
+    schema[tableName][fieldName] = { type, mode };
+  }
+
+  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  const fieldName = headers[col - 1];
+  const fieldSchema = schema[sheetName]?.[fieldName];
+  if (!fieldSchema) return;
+
+  const { type } = fieldSchema;
+
+  if (type === 'FLOAT' && !formula && typeof value === 'string') {
+    const reformattedFloat = reformatFloat(value);
+    if (reformattedFloat !== null) {
+      cell.setValue(reformattedFloat);
+      cell.setNumberFormat("#,##0.00");
+      return;
+    }
+  }
+
+  if ((type === 'INTEGER' || type === 'FLOAT') && formula) {
+    const isValid = validateDataType(value, type);
+    if (!isValid) {
+      cell.clearContent();
+      SpreadsheetApp.getUi().alert(
+        `Invalid formula result in ${sheetName}:\nRow: ${row}, Column: ${fieldName}\nExpected: ${type}, Found: ${typeof value}`
+      );
+    }
+    return;
+  }
+
+  if (type === 'TIMESTAMP') {
+    const parsedDateStr = normalizeDateToYMD(value);
+    if (parsedDateStr) {
+      cell.setValue(parsedDateStr);
+    } else {
+      cell.clearContent();
+      SpreadsheetApp.getUi().alert(
+        `Invalid TIMESTAMP format in ${sheetName}:\nRow: ${row}, Column: ${fieldName}\nExpected format: dd-mm-yyyy, yyyy-mm-dd, etc.`
+      );
+    }
+    return;
+  }
+
+  const isValid = validateDataType(value, type);
+  if (!isValid) {
+    cell.clearContent();
+    SpreadsheetApp.getUi().alert(
+      `Invalid value in ${sheetName}:\nRow: ${row}, Column: ${fieldName}\nExpected: ${type}, Found: ${typeof value}`
+    );
+    return;
+  }
+
+  const updatedAtColIndex = headers.findIndex(h => String(h).toLowerCase().trim() === 'updated_at') + 1;
+  if (updatedAtColIndex && col !== updatedAtColIndex) {
+    const updatedAtCell = sheet.getRange(row, updatedAtColIndex);
+    updatedAtCell.setValue(new Date());
+  }
+}
+
+function validateDataType(value, expectedType) {
+  if (value === null || value === '') return true;
+
+  switch (expectedType) {
+    case 'INTEGER':
+      return Number.isInteger(Number(value));
+    case 'FLOAT':
+      return !isNaN(parseFloat(value));
+    case 'STRING':
+      return typeof value === 'string';
+    case 'TIMESTAMP':
+      return typeof value === 'string' && normalizeDateToYMD(value) !== null;
+    case 'GEOGRAPHY':
+      return typeof value === 'string' && value.startsWith('POINT');
+    default:
+      return false;
+  }
+}
+
+function reformatFloat(value) {
+  if (!value) return null;
+
+  let str = String(value).trim();
+  const commaCount = (str.match(/,/g) || []).length;
+  const dotCount = (str.match(/\./g) || []).length;
+
+  if (commaCount === 1 && dotCount >= 1) {
+    str = str.replace(/\./g, '');
+    str = str.replace(',', '.');
+  } else if (commaCount === 1 && dotCount === 0) {
+    str = str.replace(',', '.');
+  } else if (dotCount >= 2 && commaCount === 0) {
+    const lastDot = str.lastIndexOf('.');
+    str = str.slice(0, lastDot).replace(/\./g, '') + '.' + str.slice(lastDot + 1);
+  }
+
+  const floatVal = parseFloat(str);
+  if (!isNaN(floatVal)) {
+    return Math.round(floatVal * 100) / 100;
+  }
+
+  return null;
+}
+
+function normalizeDateToYMD(input) {
+  if (!input) return null;
+
+  if (Object.prototype.toString.call(input) === '[object Date]' && !isNaN(input)) {
+    return Utilities.formatDate(input, Session.getScriptTimeZone(), 'yyyy-MM-dd');
+  }
+
+  if (typeof input === 'string') {
+    const cleaned = input.trim().replace(/[./]/g, '-');
+    const parts = cleaned.split('-');
+    if (parts.length !== 3) return null;
+
+    let day, month, year;
+
+    if (parts[0].length === 4) {
+      year = parts[0];
+      month = parts[1];
+      day = parts[2];
+    } else {
+      day = parts[0].padStart(2, '0');
+      month = parts[1].padStart(2, '0');
+      year = parts[2].length === 2 ? '20' + parts[2] : parts[2];
+    }
+
+    const isoString = `${year}-${month}-${day}`;
+    const testDate = new Date(`${year}-${month}-${day}T00:00:00`);
+
+    if (testDate.getFullYear() == year && testDate.getMonth() + 1 == Number(month) && testDate.getDate() == Number(day)) {
+      return isoString;
+    }
+
+    return null;
+  }
+
+  return null;
+}
+            </code></pre>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+<!-- Working Toggle Function -->
+<script>
+  function togglePeek(id) {
+    const element = document.getElementById(id);
+    element.classList.toggle("hidden");
+  }
+</script>
+
 
     <!-- Contact -->
     <script src="https://unpkg.com/lucide@latest"></script>
