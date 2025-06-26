@@ -415,13 +415,13 @@
           <img src="https://github.com/SMJ-205/resume/blob/main/Schema%20Scenario.jpeg?raw=true" alt="Schema Validation" class="w-full h-auto rounded-lg shadow-lg border border-gray-500 mt-2">
         </div>
         <p>
-          Manual data input remains an unavoidable part of data operations—even at large enterprises. One of the most commonly used tools for manual data entry is Google Sheets. However, relying on manual processes inevitably introduces the risk of human error, especially during data input or editing. In the context of ETL (Extract, Transform, Load) pipelines that source data from Google Sheets into a database system, one of the most frequent issues encountered is extract errors caused by data type mismatches.
+          Even in large organizations, manual data entry—often done through Google Sheets—remains unavoidable. However, this introduces a common risk: human error, particularly with incorrect data types, which can disrupt ETL processes and cause extract failures.
         </p>
         <p>
-          To address this, I implemented a monitoring mechanism using Google Apps Script to validate manual data input in Google Sheets. In the provided spreadsheet format shared with stakeholders, a dedicated tab labeled <strong>"Schema"</strong> is included. This sheet serves as the primary reference for mapping and validating all input data, particularly ensuring adherence to predefined data types. If any data entered violates the rules defined in the "Schema" tab, the system automatically returns an error notification and forcefully deletes the invalid entry.
+          To address this, I developed a validation system using Google Apps Script. Each shared spreadsheet includes a "Schema" tab that defines the expected data types for each column. Any input that violates these rules triggers an automatic error notification and is immediately removed.
         </p>
         <p>
-          The result of this automated data validation process is a significant reduction in human error, improved data accuracy, and a smoother overall data pipeline execution.
+This approach has significantly improved data quality, reduced input errors, and ensured smoother ETL pipeline execution.
         </p>
          <button onclick="togglePeek('peek3')" class="mt-2 text-teal-600 underline hover:text-teal-700 transition">
     Apps Script Code
@@ -430,7 +430,7 @@
         <div id="peek3" class="hidden transition-all duration-300 ease-in-out">
           <div class="mt-2 bg-gray-900 text-green-200 text-sm p-4 rounded-lg border border-gray-600 overflow-x-auto max-h-96">
             <pre><code>
-// === FULL Apps Script Code ===
+// === BASIC MINIMAL FEATURES Apps Script Code ===
 function onEdit(e) {
   const range = e.range;
   const sheet = range.getSheet();
