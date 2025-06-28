@@ -71,7 +71,7 @@
         top: 0;
         left: 0;
         pointer-events: none;
-        opacity: 0.20;
+        opacity: 0.18;
       }
 
       canvas#matrix {
@@ -529,31 +529,54 @@
     </section>
 
     <!-- Projects Section -->
-    <section
-      id="projects"
-      class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20"
-    >
-      <div class="border border-teal-400/50 rounded-xl p-4" id="projectSection">
-        <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">
-          Projects
-        </h2>
+   <section
+  id="projects"
+  class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20"
+>
+  <div class="border border-teal-400/50 rounded-xl p-4 relative">
+    <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">
+      Projects
+    </h2>
 
-        <!-- Project 1 -->
-        <div class="mb-6">
-          <h3 class="text-xl font-bold text-white">Demand Planning Analysis</h3>
-          <div class="text-gray-300 text-justify space-y-2">
-            <p>
-              <button
-                onclick="togglePeek('peek1')"
-                class="mt-2 text-teal-600 underline hover:text-teal-700 transition"
-              >
-                Sneak Peek to Analytical Dashboard
-              </button>
-            </p>
-            <div
-              id="peek1"
-              class="hidden transition-all duration-300 ease-in-out"
+    <!-- Navigation Buttons -->
+    <!-- Navigation Buttons -->
+<button
+  id="prevBtn"
+  class="absolute -left-5 top-1/2 transform -translate-y-1/2 bg-teal-600 hover:bg-teal-700 text-white p-2 rounded-full z-10"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="20" height="20">
+    <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/>
+  </svg>
+</button>
+
+<button
+  id="nextBtn"
+  class="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-teal-600 hover:bg-teal-700 text-white p-2 rounded-full z-10"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="20" height="20">
+    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+  </svg>
+</button>
+<div class="w-full shrink-0 px-6">
+
+    <!-- Carousel Container -->
+    <div class="overflow-hidden">
+      <div
+        id="carouselInner"
+        class="flex transition-transform duration-500 ease-in-out"
+        style="transform: translateX(0%)"
+      >
+        <!-- Slide 1 -->
+        <div class="w-full shrink-0 px-6">
+          <div class="mb-6 space-y-2 text-gray-300 text-justify">
+            <h3 class="text-xl font-bold text-white">Demand Planning Analysis</h3>
+            <button
+              onclick="togglePeek('peek1')"
+              class="mt-2 text-teal-600 underline hover:text-teal-700 transition"
             >
+              Sneak Peek to Analytical Dashboard
+            </button>
+            <div id="peek1" class="hidden">
               <img
                 src="https://github.com/SMJ-205/resume/blob/main/DPA%20SMJ.jpeg?raw=true"
                 alt="DPA Dashboard"
@@ -561,27 +584,20 @@
               />
             </div>
             <p>
-              In this project, I was tasked with conducting a demand planning
-              analysis using dummy data provided by Astro. The main objective of
-              the analysis was to generate demand projections for various
-              products, enabling better inventory procurement planning and
-              warehouse management.
+             In this project, I was tasked with conducting a demand planning analysis using dummy data provided by Astro. The main objective of the analysis was to generate demand projections for various products, enabling better inventory procurement planning and warehouse management.
             </p>
             <p>
-              To achieve this, I applied several forecasting methods, including:
-              <br />- 4-Week Moving Average <br />- Holt-Winters Exponential
-              Smoothing <br />- Decomposition using Moving Average <br />-
-              Decomposition using Trend Analysis
+              To achieve this, I applied several forecasting methods, including:<br />
+              - 4-Week Moving Average<br />
+              - Holt-Winters Exponential Smoothing<br />
+              - Decomposition using Moving Average<br />
+              - Decomposition using Trend Analysis
             </p>
             <p>
-              After evaluating the performance of each method based on MAPE
-              (Mean Absolute Percentage Error), the Holt-Winters method emerged
-              as the most accurate and reliable for generating demand forecasts.
+              After evaluating the performance of each method based on MAPE (Mean Absolute Percentage Error), the Holt-Winters method emerged as the most accurate and reliable for generating demand forecasts.
             </p>
             <p>
-              The results of the analysis are presented through an interactive
-              dashboard built in Google Sheets, designed to provide actionable
-              insights for inventory planning.
+            The results of the analysis are presented through an interactive dashboard built in Google Sheets, designed to provide actionable insights for inventory planning.
             </p>
             <p>
               <a
@@ -593,25 +609,20 @@
             </p>
           </div>
         </div>
-        <br />
-        <!-- Project 2 -->
-        <div class="mb-6">
-          <h3 class="text-xl font-bold text-white">
-            Google Sheet Convention Script
-          </h3>
-          <div class="text-gray-300 text-justify space-y-2">
-            <p>
-              <button
-                onclick="togglePeek('peek2')"
-                class="mt-2 text-teal-600 underline hover:text-teal-700 transition"
-              >
-                Sneak Peek of Schema Validation Scenario
-              </button>
-            </p>
-            <div
-              id="peek2"
-              class="hidden transition-all duration-300 ease-in-out"
+
+        <!-- Slide 2 -->
+        <div class="w-full shrink-0 px-6">
+          <div class="mb-6 space-y-2 text-gray-300 text-justify">
+            <h3 class="text-xl font-bold text-white">
+              Google Sheet Convention Script
+            </h3>
+            <button
+              onclick="togglePeek('peek2')"
+              class="mt-2 text-teal-600 underline hover:text-teal-700 transition"
             >
+              Sneak Peek of Schema Validation Scenario
+            </button>
+            <div id="peek2" class="hidden">
               <img
                 src="https://github.com/SMJ-205/resume/blob/main/Schema%20Scenario.jpeg?raw=true"
                 alt="Schema Validation"
@@ -619,21 +630,11 @@
               />
             </div>
             <p>
-              Even in large organizations, manual data entry—often done through
-              Google Sheets—remains unavoidable. However, this introduces a
-              common risk: human error, particularly with incorrect data types,
-              which can disrupt ETL processes and cause extract failures.
+             Even in large organizations, manual data entry—often done through Google Sheets—remains unavoidable. However, this introduces a common risk: human error, particularly with incorrect data types, which can disrupt ETL processes and cause extract failures.
             </p>
+            <p>To address this, I developed a validation system using Google Apps Script. Each shared spreadsheet includes a "Schema" tab that defines the expected data types for each column. Any input that violates these rules triggers an automatic error notification and is immediately removed.</p>
             <p>
-              To address this, I developed a validation system using Google Apps
-              Script. Each shared spreadsheet includes a "Schema" tab that
-              defines the expected data types for each column. Any input that
-              violates these rules triggers an automatic error notification and
-              is immediately removed.
-            </p>
-            <p>
-              This approach has significantly improved data quality, reduced
-              input errors, and ensured smoother ETL pipeline execution.
+            This approach has significantly improved data quality, reduced input errors, and ensured smoother ETL pipeline execution.
             </p>
             <button
               onclick="togglePeek('peek3')"
@@ -641,11 +642,7 @@
             >
               Apps Script Code
             </button>
-            <!-- Full Apps Script Code Block -->
-            <div
-              id="peek3"
-              class="hidden transition-all duration-300 ease-in-out"
-            >
+            <div id="peek3" class="hidden">
               <div
                 class="mt-2 bg-gray-900 text-green-200 text-[12px] p-4 rounded-lg border border-gray-600 overflow-x-auto max-h-96"
               >
@@ -944,6 +941,25 @@ function normalizeDateToYMD(input) {
         canvas.height = window.innerHeight;
         drops.length = Math.floor(canvas.width / fontSize);
       });
+
+        function togglePeek(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle("hidden");
+  }
+
+  let currentSlide = 0;
+  const slides = document.querySelectorAll("#carouselInner > div");
+  const carouselInner = document.getElementById("carouselInner");
+
+  document.getElementById("prevBtn").addEventListener("click", () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+  });
+
+  document.getElementById("nextBtn").addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+  });
     </script>
   </body>
 </html>
