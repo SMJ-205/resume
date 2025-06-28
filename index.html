@@ -4,45 +4,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sarif Mubdi Jantika</title>
-    <link rel="icon" type="image/svg+xml" href="https://upload.wikimedia.org/wikipedia/commons/7/79/Eo_circle_teal_white_letter-s.svg">
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://upload.wikimedia.org/wikipedia/commons/7/79/Eo_circle_teal_white_letter-s.svg"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              dark: '#1e1e1e',
-              tosca: '#2dd4bf',
+              dark: "#1e1e1e",
+              tosca: "#2dd4bf",
             },
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ["Inter", "sans-serif"],
             },
             keyframes: {
               fadeInUp: {
-                '0%': { opacity: 0, transform: 'translateY(20px)' },
-                '100%': { opacity: 1, transform: 'translateY(0)' },
+                "0%": { opacity: 0, transform: "translateY(20px)" },
+                "100%": { opacity: 1, transform: "translateY(0)" },
               },
               zoomIn: {
-                '0%': { transform: 'scale(0.4)', opacity: 0 },
-                '100%': { transform: 'scale(1)', opacity: 1 },
+                "0%": { transform: "scale(0.4)", opacity: 0 },
+                "100%": { transform: "scale(1)", opacity: 1 },
               },
               zoomOut: {
-                '0%': { transform: 'scale(1)', opacity: 1 },
-                '100%': { transform: 'scale(0.4)', opacity: 0 },
+                "0%": { transform: "scale(1)", opacity: 1 },
+                "100%": { transform: "scale(0.4)", opacity: 0 },
               },
             },
             animation: {
-              fadeInUp: 'fadeInUp 0.6s ease-out forwards',
-              zoomIn: 'zoomIn 0.5s ease-out forwards',
-              zoomOut: 'zoomOut 0.5s ease-out forwards',
+              fadeInUp: "fadeInUp 0.6s ease-out forwards",
+              zoomIn: "zoomIn 0.5s ease-out forwards",
+              zoomOut: "zoomOut 0.5s ease-out forwards",
             },
           },
         },
       };
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       html {
@@ -52,7 +59,7 @@
       body {
         background-color: #1e1e1e;
         color: #e5e7eb;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         margin: 0;
         padding: 0;
         overflow-x: hidden;
@@ -64,7 +71,7 @@
         top: 0;
         left: 0;
         pointer-events: none;
-        opacity: 0.15;
+        opacity: 0.20;
       }
 
       canvas#matrix {
@@ -75,16 +82,27 @@
       }
 
       /* Smooth transition for dark/light mode */
-      body, nav, section, div, h1, h2, h3, p, ul, li, a {
-        transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+      body,
+      nav,
+      section,
+      div,
+      h1,
+      h2,
+      h3,
+      p,
+      ul,
+      li,
+      a {
+        transition: background-color 0.5s ease, color 0.5s ease,
+          border-color 0.5s ease;
       }
 
       .light-mode img.border-tosca {
-      border-color: #0f766e !important; /* Teal 700 */
+        border-color: #0f766e !important; /* Teal 700 */
       }
 
       .light-mode {
-        background-color: #f9fafb !important;
+        background-color: #ffffff !important;
         color: #1e1e1e !important;
       }
 
@@ -93,7 +111,9 @@
         background-opacity: 0.9 !important;
       }
 
-      .light-mode .text-gray-300, .light-mode .text-gray-400, .light-mode .text-gray-500 {
+      .light-mode .text-gray-300,
+      .light-mode .text-gray-400,
+      .light-mode .text-gray-500 {
         color: #374151 !important;
       }
 
@@ -102,10 +122,18 @@
       }
 
       .light-mode .border-teal-400\/50 {
-        border-color: rgba(13, 148, 136, 0.5) !important; /* darker teal (Teal 600) */
+        border-color: rgba(
+          13,
+          148,
+          136,
+          0.5
+        ) !important; /* darker teal (Teal 600) */
       }
 
-      .light-mode .text-tosca, .light-mode .text-teal, .light-mode .text-cyan, .light-mode a {
+      .light-mode .text-tosca,
+      .light-mode .text-teal,
+      .light-mode .text-cyan,
+      .light-mode a {
         color: #0f766e !important; /* Teal 700 */
       }
 
@@ -152,7 +180,8 @@
 
       /* Smooth zoom animation */
       .smooth-zoom {
-        transition: transform 0.5s ease, opacity 0.5s ease, height 0.5s ease, margin-bottom 0.5s ease;
+        transition: transform 0.5s ease, opacity 0.5s ease, height 0.5s ease,
+          margin-bottom 0.5s ease;
         transform: scale(0.4);
         opacity: 0;
         height: 0;
@@ -173,22 +202,39 @@
     <canvas id="matrix"></canvas>
 
     <!-- Navigation Bar -->
-    <nav class="fixed top-0 w-full z-40 shadow-lg" style="background-color: rgba(30,30,30,0.9);">
-      <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center relative">
+    <nav
+      class="fixed top-0 w-full z-40 shadow-lg"
+      style="background-color: rgba(30, 30, 30, 0.9)"
+    >
+      <div
+        class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center relative"
+      >
         <span class="text-tosca font-bold text-lg">Sarif MJ</span>
-        
+
         <div class="space-x-4 text-sm flex items-center">
-          <button id="modeToggle" class="bg-tosca text-white px-3 py-1 rounded-md text-sm shadow hover:bg-teal-400 transition mode-toggle">
+          <button
+            id="modeToggle"
+            class="bg-tosca text-white px-3 py-1 rounded-md text-sm shadow hover:bg-teal-400 transition mode-toggle"
+          >
             <span>Toggle Mode</span>
           </button>
-          <button class="bg-tosca text-white px-3 py-1 rounded-md text-sm shadow hover:bg-teal-400 transition navigation-toggle" onclick="toggleNavDropdown()">
+          <button
+            class="bg-tosca text-white px-3 py-1 rounded-md text-sm shadow hover:bg-teal-400 transition navigation-toggle"
+            onclick="toggleNavDropdown()"
+          >
             Navigation
           </button>
           <div class="navigation-links flex space-x-4">
             <a href="#about" class="text-gray-300 hover:text-tosca">About Me</a>
-            <a href="#experiences" class="text-gray-300 hover:text-tosca">Experiences</a>
-            <a href="#projects" class="text-gray-300 hover:text-tosca">Projects</a>
-            <a href="#contact" class="text-gray-300 hover:text-tosca">Contact</a>
+            <a href="#experiences" class="text-gray-300 hover:text-tosca"
+              >Experiences</a
+            >
+            <a href="#projects" class="text-gray-300 hover:text-tosca"
+              >Projects</a
+            >
+            <a href="#contact" class="text-gray-300 hover:text-tosca"
+              >Contact</a
+            >
           </div>
         </div>
       </div>
@@ -204,233 +250,406 @@
 
     <script>
       function toggleNavDropdown() {
-        const dropdown = document.getElementById('navDropdown');
-        if (dropdown.style.display === 'block') {
-          dropdown.style.display = 'none';
+        const dropdown = document.getElementById("navDropdown");
+        if (dropdown.style.display === "block") {
+          dropdown.style.display = "none";
         } else {
-          dropdown.style.display = 'block';
+          dropdown.style.display = "block";
         }
       }
 
-      window.addEventListener('click', function (e) {
-        const dropdown = document.getElementById('navDropdown');
-        if (!dropdown.contains(e.target) && !document.querySelector('.navigation-toggle').contains(e.target)) {
-          dropdown.style.display = 'none';
+      window.addEventListener("click", function (e) {
+        const dropdown = document.getElementById("navDropdown");
+        if (
+          !dropdown.contains(e.target) &&
+          !document.querySelector(".navigation-toggle").contains(e.target)
+        ) {
+          dropdown.style.display = "none";
         }
       });
 
-      const toggle = document.getElementById('modeToggle');
-      toggle.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
+      const toggle = document.getElementById("modeToggle");
+      toggle.addEventListener("click", () => {
+        document.body.classList.toggle("light-mode");
       });
 
       function toggleZoom() {
-        const zoomElement = document.getElementById('sneakPeekImage');
-        const projectSection = document.getElementById('projectSection');
-        if (zoomElement.classList.contains('show-zoom')) {
-          zoomElement.classList.remove('show-zoom');
-          zoomElement.classList.add('smooth-zoom');
-          projectSection.classList.remove('expanded');
+        const zoomElement = document.getElementById("sneakPeekImage");
+        const projectSection = document.getElementById("projectSection");
+        if (zoomElement.classList.contains("show-zoom")) {
+          zoomElement.classList.remove("show-zoom");
+          zoomElement.classList.add("smooth-zoom");
+          projectSection.classList.remove("expanded");
         } else {
-          zoomElement.classList.remove('smooth-zoom');
-          zoomElement.classList.add('show-zoom');
-          projectSection.classList.add('expanded');
+          zoomElement.classList.remove("smooth-zoom");
+          zoomElement.classList.add("show-zoom");
+          projectSection.classList.add("expanded");
         }
       }
     </script>
 
     <!-- About Section (Merged with Header/Profile) -->
-    <section id="about" class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 scroll-mt-20">
-      <h1 class="text-5xl md:text-6xl font-bold text-tosca animate-fadeInUp">Sarif Mubdi Jantika</h1>
-      <p class="mt-4 text-xl text-gray-400 animate-fadeInUp">Data Analyst & Accountant</p>
-      <p class="mt-2 text-sm text-gray-500 animate-fadeInUp">Searching for Treasure in Data</p>
+    <section
+      id="about"
+      class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 scroll-mt-20"
+    >
+      <h1 class="text-5xl md:text-6xl font-bold text-tosca animate-fadeInUp">
+        Sarif Mubdi Jantika
+      </h1>
+      <p class="mt-4 text-xl text-gray-400 animate-fadeInUp">
+        Data Analyst & Accountant
+      </p>
+      <p class="mt-2 text-sm text-gray-500 animate-fadeInUp">
+        Searching for Treasure in Data
+      </p>
 
       <div class="mt-6 animate-fadeInUp">
-       <img 
-  src="https://raw.githubusercontent.com/SMJ-205/resume/main/Prof%20Pic%20Draft.png" 
-  alt="Profile Picture" 
-  class="rounded-full w-56 h-56 object-cover shadow-lg border-4 border-tosca" />
+        <img
+          src="https://raw.githubusercontent.com/SMJ-205/resume/main/Prof%20Pic%20Draft.png"
+          alt="Profile Picture"
+          class="rounded-full w-56 h-56 object-cover shadow-lg border-4 border-tosca"
+        />
       </div>
 
       <!-- Now the About text is directly below the picture -->
       <div class="max-w-2xl mx-auto mt-6 px-6 text-justify animate-fadeInUp">
-        <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">About Me</h2>
-        
+        <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">
+          About Me
+        </h2>
+
         <p class="text-gray-300 mb-4">
-          Data Analyst with 12+ years of experience in accounting and tax reporting — now leveraging that deep financial background to build reliable, decision-ready data products. Currently working at Connected Commerce, where I focus on creating a trusted SSOT for finance operations. I design and automate data pipelines using tools like <span class="text-tosca">Airflow</span>, transform business requirements into scalable models with <span class="text-tosca">SQL</span>, <span class="text-tosca">DBT</span> and <span class="text-tosca">Python</span>. I also help enforce data standards and conventions to ensure our datasets remain clean, consistent, and reliable.
+          Data Analyst with 12+ years of experience in accounting and tax
+          reporting — now leveraging that deep financial background to build
+          reliable, decision-ready data products. Currently working at Connected
+          Commerce, where I focus on creating a trusted SSOT for finance
+          operations. I design and automate data pipelines using tools like
+          <span class="text-tosca">Airflow</span>, transform business
+          requirements into scalable models with
+          <span class="text-tosca">SQL</span>,
+          <span class="text-tosca">DBT</span> and
+          <span class="text-tosca">Python</span>. I also help enforce data
+          standards and conventions to ensure our datasets remain clean,
+          consistent, and reliable.
         </p>
-        
+
         <p class="text-gray-300">
-          My years as an accountant taught me how businesses think — and now I translate those needs into data solutions that actually work for stakeholders. Passionate about connecting the dots between raw data and real business impact, and always looking to grow as a modern data professional.
+          My years as an accountant taught me how businesses think — and now I
+          translate those needs into data solutions that actually work for
+          stakeholders. Passionate about connecting the dots between raw data
+          and real business impact, and always looking to grow as a modern data
+          professional.
         </p>
       </div>
     </section>
 
     <!-- Experiences Section -->
-<section id="experiences" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
-  <div class="border border-teal-400/50 rounded-xl p-4 ">
-    <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Experiences</h2>
+    <section
+      id="experiences"
+      class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20"
+    >
+      <div class="border border-teal-400/50 rounded-xl p-4">
+        <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">
+          Experiences
+        </h2>
 
-    <div class="mb-6">
-      <h3 class="text-xl font-bold text-white">Evermos</h3>
-      <p class="text-m text-tosca text-400">Data Analyst (Full-time)</p>
-      <p class="text-sm text-gray-400">📍 Bandung, West Java, Indonesia · Hybrid<br>🗓 Oct 2023 – Present · 1 yr 9 mos</p>
-      <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
-        <li>Spearhead data-driven decision-making using modern analytics tools and workflow automation.</li>
-        <li>Skills: SQL, DBT, Airflow, Python, Snowflake, Metabase, AppScript, Looker</li>
-      </ul>
-    </div>
-
-    <div class="mb-6">
-      <h3 class="text-xl font-bold text-white">PT Murakabi Talenta Cala</h3>
-      <p class="text-m text-tosca text-400">Accounting Supervisor (Part-time)</p>
-      <p class="text-sm text-gray-400">📍 Bandung, West Java, Indonesia<br>🗓 Mar 2018 – Present · 7 yrs 4 mos</p>
-      <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
-        <li>Supervise financial reporting, tax compliance, and payroll systems.</li>
-        <li>Analyze financial data for budgeting and forecasting.</li>
-        <li>Advise leadership with financial insights and develop dashboards to support decision-making.</li>
-      </ul>
-    </div>
-
-    <div class="mb-6">
-      <h3 class="text-xl font-bold text-white">RevoU</h3>
-      <p class="text-m text-tosca text-400">Team Lead (Part-time)</p>
-      <p class="text-sm text-gray-400">🗓 Aug 2022 – Present · 2 yrs 11 mos</p>
-      <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
-        <li>Guide a team of 12 students through the Data Analytics program via simulations and 1-on-1 sessions.</li>
-        <li>Mentor students on data cleaning, analysis, and visualization.</li>
-        <li>Provide additional learning support beyond the core curriculum.</li>
-        <li>Skills: SQL, Python, Data Visualization</li>
-      </ul>
-    </div>
-
-    <div class="mb-6">
-      <p class="text-m text-tosca text-400">Vertical Mentor – RevoU x AWS Kampus Merdeka Program CendekiAwan</p>
-      <p class="text-sm text-gray-400">🗓 Jan 2024 – Jun 2024 · 6 mos · Remote</p>
-      <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
-        <li>Mentored students on cloud-based analytics solutions in collaboration with AWS.</li>
-        <li>Skills: AWS</li>
-      </ul>
-    </div>
-
-    <div class="mb-6">
-      <p class="text-m text-tosca text-400">Data Analytics Mentor – RevoU x Kampus Merdeka Program</p>
-      <p class="text-sm text-gray-400">🗓 Aug 2023 – Dec 2023 · 5 mos · Remote</p>
-      <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
-        <li>Led simulations and mentoring sessions in data analytics.</li>
-        <li>Reviewed capstone projects and provided actionable feedback.</li>
-      </ul>
-    </div>
-
-    <div class="mb-6">
-      <p class="text-m text-tosca text-400">Data Analyst Associate – RevoU Virtual Labs (Freelance)</p>
-      <p class="text-sm text-gray-400">🗓 Sep 2022 – Dec 2022 · 4 mos</p>
-      <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
-        <li>Conducted feature prioritization, customer segmentation, churn analysis, and KPI monitoring for a stealth startup.</li>
-        <li>Skills: SQL, Python, Data Analysis, Storytelling, Visualization, Team Management</li>
-      </ul>
-    </div>
-
-    <div class="mb-6">
-      <h3 class="text-xl font-bold text-white">Koperasi Pegawai Indosat</h3>
-      <p class="text-m text-tosca text-400">Senior Accountant (Full-time)</p>
-      <p class="text-sm text-gray-400">📍 Bandung, West Java, Indonesia<br>🗓 Jan 2012 – Feb 2022 · 10 yrs 2 mos</p>
-      <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
-        <li>Managed financial reporting and reconciliation for the West Java region.</li>
-        <li>Provided strategic advice to regional leaders.</li>
-        <li>Led system migration to ODOO and resolved complex accounting discrepancies.</li>
-        <li>Skills: Financial Analysis, Reporting, Taxation, ERP Migration (ODOO)</li>
-      </ul>
-    </div>
-
-    <div class="mb-6">
-      <h3 class="text-xl font-bold text-white">Satuan Tugas Penanganan COVID-19 Nasional</h3>
-      <p class="text-m text-tosca text-400">Data Administrator (Contract)</p>
-      <p class="text-sm text-gray-400">📍 Jakarta, Indonesia<br>🗓 Oct 2020 – Mar 2021 · 6 mos</p>
-      <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
-        <li>Cleaned user data and tracked budget realization for COVID-19 response.</li>
-        <li>Designed SOPs and supervised application usage in the field.</li>
-      </ul>
-    </div>
-
-    <div class="mb-6">
-      <h3 class="text-xl font-bold text-white">PT Plaza Indonesia Realty, Tbk</h3>
-      <p class="text-m text-tosca text-400">Finance Ops - Accounts Payable (Full-time)</p>
-      <p class="text-sm text-gray-400">📍 Jakarta, Indonesia<br>🗓 Jul 2010 – Oct 2011 · 1 yr 4 mos</p>
-      <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
-        <li>Handled AP processes, collection and payment reconciliation.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-  <!-- Projects Section -->
-<section id="projects" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
-  <div class="border border-teal-400/50 rounded-xl p-4" id="projectSection">
-    <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Projects</h2>
-
-    <!-- Project 1 -->
-    <div class="mb-6">
-      <h3 class="text-xl font-bold text-white">Demand Planning Analysis</h3>
-      <div class="text-gray-300 text-justify space-y-2">
-        <p>
-          <button onclick="togglePeek('peek1')" class="mt-2 text-teal-600 underline hover:text-teal-700 transition">
-            Sneak Peek to Analytical Dashboard
-          </button>
-        </p>
-        <div id="peek1" class="hidden transition-all duration-300 ease-in-out">
-          <img src="https://github.com/SMJ-205/resume/blob/main/DPA%20SMJ.jpeg?raw=true" alt="DPA Dashboard" class="w-full h-auto rounded-lg shadow-lg border border-gray-500 mt-2">
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-white">Evermos</h3>
+          <p class="text-m text-tosca text-400">Data Analyst (Full-time)</p>
+          <p class="text-sm text-gray-400">
+            📍 Bandung, West Java, Indonesia · Hybrid<br />🗓 Oct 2023 – Present
+            · 1 yr 9 mos
+          </p>
+          <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
+            <li>
+              Spearhead data-driven decision-making using modern analytics tools
+              and workflow automation.
+            </li>
+            <li>
+              Skills: SQL, DBT, Airflow, Python, Snowflake, Metabase, AppScript,
+              Looker
+            </li>
+          </ul>
         </div>
-        <p>
-          In this project, I was tasked with conducting a demand planning analysis using dummy data provided by Astro. The main objective of the analysis was to generate demand projections for various products, enabling better inventory procurement planning and warehouse management.
-        </p>
-        <p>
-          To achieve this, I applied several forecasting methods, including:
-          <br>- 4-Week Moving Average
-          <br>- Holt-Winters Exponential Smoothing
-          <br>- Decomposition using Moving Average
-          <br>- Decomposition using Trend Analysis
-        </p>
-        <p>
-          After evaluating the performance of each method based on MAPE (Mean Absolute Percentage Error), the Holt-Winters method emerged as the most accurate and reliable for generating demand forecasts.
-        </p>
-        <p>
-          The results of the analysis are presented through an interactive dashboard built in Google Sheets, designed to provide actionable insights for inventory planning.
-        </p>
-        <p>
-          <a href="https://docs.google.com/spreadsheets/d/1kt40nTtKpuGvBIjNW22Yic4fz76HnNb9peKe2_ygIaA/edit?gid=1168121026#gid=1168121026" target="_blank" class="text-teal-400 underline hover:text-teal-300 transition">DPA Dashboard Google Sheet</a>
-        </p>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-white">PT Murakabi Talenta Cala</h3>
+          <p class="text-m text-tosca text-400">
+            Accounting Supervisor (Part-time)
+          </p>
+          <p class="text-sm text-gray-400">
+            📍 Bandung, West Java, Indonesia<br />🗓 Mar 2018 – Present · 7 yrs 4
+            mos
+          </p>
+          <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
+            <li>
+              Supervise financial reporting, tax compliance, and payroll
+              systems.
+            </li>
+            <li>Analyze financial data for budgeting and forecasting.</li>
+            <li>
+              Advise leadership with financial insights and develop dashboards
+              to support decision-making.
+            </li>
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-white">RevoU</h3>
+          <p class="text-m text-tosca text-400">Team Lead (Part-time)</p>
+          <p class="text-sm text-gray-400">
+            🗓 Aug 2022 – Present · 2 yrs 11 mos
+          </p>
+          <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
+            <li>
+              Guide a team of 12 students through the Data Analytics program via
+              simulations and 1-on-1 sessions.
+            </li>
+            <li>
+              Mentor students on data cleaning, analysis, and visualization.
+            </li>
+            <li>
+              Provide additional learning support beyond the core curriculum.
+            </li>
+            <li>Skills: SQL, Python, Data Visualization</li>
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <p class="text-m text-tosca text-400">
+            Vertical Mentor – RevoU x AWS Kampus Merdeka Program CendekiAwan
+          </p>
+          <p class="text-sm text-gray-400">
+            🗓 Jan 2024 – Jun 2024 · 6 mos · Remote
+          </p>
+          <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
+            <li>
+              Mentored students on cloud-based analytics solutions in
+              collaboration with AWS.
+            </li>
+            <li>Skills: AWS</li>
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <p class="text-m text-tosca text-400">
+            Data Analytics Mentor – RevoU x Kampus Merdeka Program
+          </p>
+          <p class="text-sm text-gray-400">
+            🗓 Aug 2023 – Dec 2023 · 5 mos · Remote
+          </p>
+          <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
+            <li>Led simulations and mentoring sessions in data analytics.</li>
+            <li>
+              Reviewed capstone projects and provided actionable feedback.
+            </li>
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <p class="text-m text-tosca text-400">
+            Data Analyst Associate – RevoU Virtual Labs (Freelance)
+          </p>
+          <p class="text-sm text-gray-400">🗓 Sep 2022 – Dec 2022 · 4 mos</p>
+          <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
+            <li>
+              Conducted feature prioritization, customer segmentation, churn
+              analysis, and KPI monitoring for a stealth startup.
+            </li>
+            <li>
+              Skills: SQL, Python, Data Analysis, Storytelling, Visualization,
+              Team Management
+            </li>
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-white">Koperasi Pegawai Indosat</h3>
+          <p class="text-m text-tosca text-400">
+            Senior Accountant (Full-time)
+          </p>
+          <p class="text-sm text-gray-400">
+            📍 Bandung, West Java, Indonesia<br />🗓 Jan 2012 – Feb 2022 · 10 yrs
+            2 mos
+          </p>
+          <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
+            <li>
+              Managed financial reporting and reconciliation for the West Java
+              region.
+            </li>
+            <li>Provided strategic advice to regional leaders.</li>
+            <li>
+              Led system migration to ODOO and resolved complex accounting
+              discrepancies.
+            </li>
+            <li>
+              Skills: Financial Analysis, Reporting, Taxation, ERP Migration
+              (ODOO)
+            </li>
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-white">
+            Satuan Tugas Penanganan COVID-19 Nasional
+          </h3>
+          <p class="text-m text-tosca text-400">
+            Data Administrator (Contract)
+          </p>
+          <p class="text-sm text-gray-400">
+            📍 Jakarta, Indonesia<br />🗓 Oct 2020 – Mar 2021 · 6 mos
+          </p>
+          <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
+            <li>
+              Cleaned user data and tracked budget realization for COVID-19
+              response.
+            </li>
+            <li>
+              Designed SOPs and supervised application usage in the field.
+            </li>
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-white">
+            PT Plaza Indonesia Realty, Tbk
+          </h3>
+          <p class="text-m text-tosca text-400">
+            Finance Ops - Accounts Payable (Full-time)
+          </p>
+          <p class="text-sm text-gray-400">
+            📍 Jakarta, Indonesia<br />🗓 Jul 2010 – Oct 2011 · 1 yr 4 mos
+          </p>
+          <ul class="list-disc pl-6 text-gray-300 space-y-1 mt-2">
+            <li>
+              Handled AP processes, collection and payment reconciliation.
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-<br>
-    <!-- Project 2 -->
-    <div class="mb-6">
-      <h3 class="text-xl font-bold text-white">Google Sheet Convention Script</h3>
-      <div class="text-gray-300 text-justify space-y-2">
-        <p>
-          <button onclick="togglePeek('peek2')" class="mt-2 text-teal-600 underline hover:text-teal-700 transition">
-            Sneak Peek of Schema Validation Scenario
-          </button>
-        </p>
-        <div id="peek2" class="hidden transition-all duration-300 ease-in-out">
-          <img src="https://github.com/SMJ-205/resume/blob/main/Schema%20Scenario.jpeg?raw=true" alt="Schema Validation" class="w-full h-auto rounded-lg shadow-lg border border-gray-500 mt-2">
+    </section>
+
+    <!-- Projects Section -->
+    <section
+      id="projects"
+      class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20"
+    >
+      <div class="border border-teal-400/50 rounded-xl p-4" id="projectSection">
+        <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">
+          Projects
+        </h2>
+
+        <!-- Project 1 -->
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-white">Demand Planning Analysis</h3>
+          <div class="text-gray-300 text-justify space-y-2">
+            <p>
+              <button
+                onclick="togglePeek('peek1')"
+                class="mt-2 text-teal-600 underline hover:text-teal-700 transition"
+              >
+                Sneak Peek to Analytical Dashboard
+              </button>
+            </p>
+            <div
+              id="peek1"
+              class="hidden transition-all duration-300 ease-in-out"
+            >
+              <img
+                src="https://github.com/SMJ-205/resume/blob/main/DPA%20SMJ.jpeg?raw=true"
+                alt="DPA Dashboard"
+                class="w-full h-auto rounded-lg shadow-lg border border-gray-500 mt-2"
+              />
+            </div>
+            <p>
+              In this project, I was tasked with conducting a demand planning
+              analysis using dummy data provided by Astro. The main objective of
+              the analysis was to generate demand projections for various
+              products, enabling better inventory procurement planning and
+              warehouse management.
+            </p>
+            <p>
+              To achieve this, I applied several forecasting methods, including:
+              <br />- 4-Week Moving Average <br />- Holt-Winters Exponential
+              Smoothing <br />- Decomposition using Moving Average <br />-
+              Decomposition using Trend Analysis
+            </p>
+            <p>
+              After evaluating the performance of each method based on MAPE
+              (Mean Absolute Percentage Error), the Holt-Winters method emerged
+              as the most accurate and reliable for generating demand forecasts.
+            </p>
+            <p>
+              The results of the analysis are presented through an interactive
+              dashboard built in Google Sheets, designed to provide actionable
+              insights for inventory planning.
+            </p>
+            <p>
+              <a
+                href="https://docs.google.com/spreadsheets/d/1kt40nTtKpuGvBIjNW22Yic4fz76HnNb9peKe2_ygIaA/edit?gid=1168121026#gid=1168121026"
+                target="_blank"
+                class="text-teal-400 underline hover:text-teal-300 transition"
+                >DPA Dashboard Google Sheet</a
+              >
+            </p>
+          </div>
         </div>
-        <p>
-          Even in large organizations, manual data entry—often done through Google Sheets—remains unavoidable. However, this introduces a common risk: human error, particularly with incorrect data types, which can disrupt ETL processes and cause extract failures.
-        </p>
-        <p>
-          To address this, I developed a validation system using Google Apps Script. Each shared spreadsheet includes a "Schema" tab that defines the expected data types for each column. Any input that violates these rules triggers an automatic error notification and is immediately removed.
-        </p>
-        <p>
-This approach has significantly improved data quality, reduced input errors, and ensured smoother ETL pipeline execution.
-        </p>
-         <button onclick="togglePeek('peek3')" class="mt-2 text-teal-600 underline hover:text-teal-700 transition">
-    Apps Script Code
-  </button>
-   <!-- Full Apps Script Code Block -->
-        <div id="peek3" class="hidden transition-all duration-300 ease-in-out">
-          <div class="mt-2 bg-gray-900 text-green-200 text-[12px] p-4 rounded-lg border border-gray-600 overflow-x-auto max-h-96">
-            <pre><code>
+        <br />
+        <!-- Project 2 -->
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-white">
+            Google Sheet Convention Script
+          </h3>
+          <div class="text-gray-300 text-justify space-y-2">
+            <p>
+              <button
+                onclick="togglePeek('peek2')"
+                class="mt-2 text-teal-600 underline hover:text-teal-700 transition"
+              >
+                Sneak Peek of Schema Validation Scenario
+              </button>
+            </p>
+            <div
+              id="peek2"
+              class="hidden transition-all duration-300 ease-in-out"
+            >
+              <img
+                src="https://github.com/SMJ-205/resume/blob/main/Schema%20Scenario.jpeg?raw=true"
+                alt="Schema Validation"
+                class="w-full h-auto rounded-lg shadow-lg border border-gray-500 mt-2"
+              />
+            </div>
+            <p>
+              Even in large organizations, manual data entry—often done through
+              Google Sheets—remains unavoidable. However, this introduces a
+              common risk: human error, particularly with incorrect data types,
+              which can disrupt ETL processes and cause extract failures.
+            </p>
+            <p>
+              To address this, I developed a validation system using Google Apps
+              Script. Each shared spreadsheet includes a "Schema" tab that
+              defines the expected data types for each column. Any input that
+              violates these rules triggers an automatic error notification and
+              is immediately removed.
+            </p>
+            <p>
+              This approach has significantly improved data quality, reduced
+              input errors, and ensured smoother ETL pipeline execution.
+            </p>
+            <button
+              onclick="togglePeek('peek3')"
+              class="mt-2 text-teal-600 underline hover:text-teal-700 transition"
+            >
+              Apps Script Code
+            </button>
+            <!-- Full Apps Script Code Block -->
+            <div
+              id="peek3"
+              class="hidden transition-all duration-300 ease-in-out"
+            >
+              <div
+                class="mt-2 bg-gray-900 text-green-200 text-[12px] p-4 rounded-lg border border-gray-600 overflow-x-auto max-h-96"
+              >
+                <pre><code>
 // === BASIC MINIMAL FEATURES Apps Script Code ===
 function onEdit(e) {
   const range = e.range;
@@ -622,45 +841,61 @@ function normalizeDateToYMD(input) {
   return null;
 }
             </code></pre>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Working Toggle Function -->
-<script>
-  function togglePeek(id) {
-    const element = document.getElementById(id);
-    element.classList.toggle("hidden");
-  }
-</script>
-
-
-    <!-- Contact -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <section id="contact" class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20">
-      <div class="border border-teal-400/50 rounded-xl p-4">
-        <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">Contact</h2>
-        <div class="text-gray-300 space-y-2">
-          <div class="flex items-center gap-2">
-            <i data-lucide="mail" class="w-5 h-5 text-white"></i>
-            <a href="mailto:sarif.mj@gmail.com" class="text-tosca hover:underline">sarif.mj@gmail.com</a>
-          </div>
-          <div class="flex items-center gap-2">
-            <i data-lucide="github" class="w-5 h-5 text-white"></i>
-            <a href="https://github.com/SMJ-205" class="text-tosca hover:underline">SMJ-205</a>
-          </div>
-          <div class="flex items-center gap-2">
-            <i data-lucide="linkedin" class="w-5 h-5 text-white"></i>
-            <a href="https://linkedin.com/in/sarifmj" class="text-tosca hover:underline">in/sarifmj</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-        <!-- Initialize Lucide -->
+    <!-- Working Toggle Function -->
+    <script>
+      function togglePeek(id) {
+        const element = document.getElementById(id);
+        element.classList.toggle("hidden");
+      }
+    </script>
+
+    <!-- Contact -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <section
+      id="contact"
+      class="max-w-3xl mx-auto px-6 mt-24 animate-fadeInUp scroll-mt-20"
+    >
+      <div class="border border-teal-400/50 rounded-xl p-4">
+        <h2 class="text-2xl text-tosca font-semibold mb-4 text-center">
+          Contact
+        </h2>
+        <div class="text-gray-300 space-y-2">
+          <div class="flex items-center gap-2">
+            <i data-lucide="mail" class="w-5 h-5 text-white"></i>
+            <a
+              href="mailto:sarif.mj@gmail.com"
+              class="text-tosca hover:underline"
+              >sarif.mj@gmail.com</a
+            >
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="github" class="w-5 h-5 text-white"></i>
+            <a
+              href="https://github.com/SMJ-205"
+              class="text-tosca hover:underline"
+              >SMJ-205</a
+            >
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="linkedin" class="w-5 h-5 text-white"></i>
+            <a
+              href="https://linkedin.com/in/sarifmj"
+              class="text-tosca hover:underline"
+              >in/sarifmj</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Initialize Lucide -->
     <script>
       lucide.createIcons();
     </script>
@@ -672,22 +907,22 @@ function normalizeDateToYMD(input) {
 
     <!-- Matrix Background Script -->
     <script>
-      const canvas = document.getElementById('matrix');
-      const ctx = canvas.getContext('2d');
+      const canvas = document.getElementById("matrix");
+      const ctx = canvas.getContext("2d");
 
       canvas.height = window.innerHeight;
       canvas.width = window.innerWidth;
 
-      const letters = '01'.split('');
+      const letters = "01".split("");
       const fontSize = 14;
       const columns = canvas.width / fontSize;
       const drops = Array.from({ length: columns }).fill(1);
 
       function draw() {
-        ctx.fillStyle = 'rgba(30,30,30,0.15)';
+        ctx.fillStyle = "rgba(30,30,30,0.15)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.fillStyle = '#2dd4bf';
+        ctx.fillStyle = "#2dd4bf";
         ctx.font = `${fontSize}px monospace`;
 
         for (let i = 0; i < drops.length; i++) {
@@ -704,7 +939,7 @@ function normalizeDateToYMD(input) {
 
       setInterval(draw, 50);
 
-      window.addEventListener('resize', () => {
+      window.addEventListener("resize", () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         drops.length = Math.floor(canvas.width / fontSize);
